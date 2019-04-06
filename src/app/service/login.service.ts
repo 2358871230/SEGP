@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,11 @@ export class LoginService {
       password: password
     };
     console.log(obj);
-    this.http.post(`${this.uri}`, obj).subscribe(res => console.log('Done'))
+    this.http.post(`${this.uri}`, obj).subscribe(res => {
+      console.log('Done')
+    }, (err: HttpErrorResponse) => {
+      
+    })
   }
 
 }
